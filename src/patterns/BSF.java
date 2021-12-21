@@ -5,23 +5,23 @@ import java.util.List;
 import java.util.Queue;
 
 //https://www.journaldev.com/44201/breadth-first-search-depth-first-search-bfs-dfs
-class TreeNode {
-    TreeNode(int data){
+class Node {
+    Node(int data){
         this.data = data;
         left = right = null;
     }
     int data;
-    TreeNode left;
-    TreeNode right;
+    Node left;
+    Node right;
 }
 class BSF {
     // Iterative
-    static List<List<Integer>> printLevelOrderItr(TreeNode root) {
-        Queue<TreeNode> queue = new LinkedList<TreeNode>();
+    static List<List<Integer>> printLevelOrderItr(Node root) {
+        Queue<Node> queue = new LinkedList<Node>();
         queue.add(root);
 
         while(!queue.isEmpty()) {
-            TreeNode temp = queue.poll();
+            Node temp = queue.poll();
             System.out.println(temp.data + " ");
 
             //add left child to the queue
@@ -38,11 +38,11 @@ class BSF {
 
    //TODO add pre/post/in order from above url
     public static void main(String args[]) {
-        TreeNode root = new TreeNode(0);
-        root.left = new TreeNode(1);
-        root.right = new TreeNode(2);
-        root.left.left = new TreeNode(3);
-        root.left.right = new TreeNode(4);
+        Node root = new Node(0);
+        root.left = new Node(1);
+        root.right = new Node(2);
+        root.left.left = new Node(3);
+        root.left.right = new Node(4);
 
         System.out.println("\nLevelorder traversal");
         printLevelOrderItr(root);

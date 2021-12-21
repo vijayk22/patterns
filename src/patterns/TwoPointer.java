@@ -1,11 +1,5 @@
 package patterns;
 
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
-import javax.swing.tree.TreeNode;
-
 public class TwoPointer {
 
     void reverseString(char[] chars) {

@@ -2,9 +2,9 @@ package patterns;
 
 import java.util.Stack;
 
-public class DSF {
+public class DFS {
 
-    static void preorder(TreeNode node){
+    static void preorder(Node node){
         if(node == null)
             return;
         System.out.println(node.data + "->");
@@ -12,7 +12,7 @@ public class DSF {
         preorder(node.right);
     }
 
-    static void inorder(TreeNode node){
+    static void inorder(Node node){
         if(node == null)
             return;
         inorder(node.left);
@@ -20,13 +20,13 @@ public class DSF {
         inorder(node.right);
     }
 
-    static void preorderIter(TreeNode root) {
+    static void preorderIter(Node root) {
         if(root==null)
             return;
-        Stack<TreeNode> stack = new Stack();
+        Stack<Node> stack = new Stack();
         stack.push(root);
         while(!stack.isEmpty()) {
-            TreeNode curr = stack.pop();
+            Node curr = stack.pop();
             System.out.println(curr.data + " ");
             if(curr.right !=null)
                 stack.push(curr.right);
@@ -36,9 +36,9 @@ public class DSF {
     }
     //iterative
     //https://www.techiedelight.com/inorder-tree-traversal-iterative-recursive/
-    static void inorderItr(TreeNode root) {
-        Stack<TreeNode> stack = new Stack<>();
-        TreeNode curr = root; //start from root but see below...
+    static void inorderItr(Node root) {
+        Stack<Node> stack = new Stack<>();
+        Node curr = root; //start from root but see below...
         while(!stack.isEmpty() || curr != null) {
             if(curr !=null) {
                 //if curr node exists, push it into the stack (defer it)
@@ -54,16 +54,16 @@ public class DSF {
     }
 
 
-    static void postorderItr(TreeNode root) {
+    static void postorderItr(Node root) {
         if(root==null)
             return;
-        Stack<TreeNode> stack = new Stack<>();
+        Stack<Node> stack = new Stack<>();
         stack.push(root);
 
         //create another stack to store postorder traversal
         Stack<Integer> out = new Stack<>();
         while(!stack.empty()) {
-            TreeNode curr = stack.pop(); //again put root node out/or on sie.
+            Node curr = stack.pop(); //again put root node out/or on sie.
             out.push(curr.data);
             //push the left and right child of popped node into stack.
             if(curr.left !=null)
@@ -79,11 +79,11 @@ public class DSF {
     }
 
     public static void main(String args[]) {
-        TreeNode root = new TreeNode(0);
-        root.left = new TreeNode(1);
-        root.right = new TreeNode(2);
-        root.left.left = new TreeNode(3);
-        root.left.right = new TreeNode(4);
+        Node root = new Node(0);
+        root.left = new Node(1);
+        root.right = new Node(2);
+        root.left.left = new Node(3);
+        root.left.right = new Node(4);
 
         System.out.println("Inorder traversal");
         inorder(root);
