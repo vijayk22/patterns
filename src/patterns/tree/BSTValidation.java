@@ -1,4 +1,4 @@
-package patterns;
+package patterns.tree;
 
 public class BSTValidation {
 
