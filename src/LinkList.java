@@ -105,6 +105,22 @@ public class LinkList {
                 later = curr.next;
         }
     }
+    public Node reverseList(Node head) {
+        //not to loose head
+        Node curr = head;
+        Node prev = null;
+        while(curr != null) {
+            //don't loose existing reln before changing !!
+            Node next = curr.next;
+            curr.next =prev; //switch the direction (reverse)
+
+            //increment
+            prev = curr;
+            curr = next;
+        }
+        //return head
+        return prev;
+    }
 
     public static void main(String args[]) {
         LinkList ll = new LinkList();
