@@ -79,7 +79,7 @@ public class DoublyLL {
             Node next = curr.next;
             curr.next =prev; //switch the direction (reverse)
 
-           //increment
+            //increment
             prev = curr;
             curr = next;
         }
