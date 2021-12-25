@@ -70,6 +70,22 @@ public class DoublyLL {
         }
     }
 
+    void delete(Node del) {
+       if(head == null || del == null) return;
+       if(del.prev != null)
+           del.prev.next = del.next;
+       if(del.next != null)
+           del.next.prev = del.prev;
+    }
+
+    void deleteNodeAtGivenPosn(int pos) {
+       Node del = head;
+       for(int i=0; i < pos-1 && del != null; i++)
+            del = del.next;
+
+       delete(del);
+    }
+
     public static void main(String[] args)
     {
         /* Start with the empty list */
@@ -99,6 +115,10 @@ public class DoublyLL {
         dll.insertBefore(dll.head.next.next, 5);
 
         System.out.println("Created DLL is: ");
+        dll.printList(dll.head);
+
+        dll.deleteNodeAtGivenPosn(2);
+        System.out.println("\n");
         dll.printList(dll.head);
     }
 }
