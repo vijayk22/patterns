@@ -11,7 +11,6 @@ import java.util.Deque;
 public class GraphDFSItr {
     static void dfsByIterative(GraphUndirectedByAdjList g, int v) {
         boolean[] visited = new boolean[g.getV()];
-
         Deque<Integer> stack = new ArrayDeque<>();
         stack.push(v);
 
