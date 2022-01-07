@@ -1,58 +1,42 @@
 package patterns.graph;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Stack;
+import java.util.ArrayDeque;
+import java.util.Deque;
+
+//https://hellokoding.com/depth-first-search-algorithm-on-graph/
+
+//See also: for different types of graphs
+//https://hellokoding.com/graph-data-structure/
+
 public class GraphDFSItr {
+    static void dfsByIterative(GraphUndirectedByAdjList g, int v) {
+        boolean[] visited = new boolean[g.getV()];
 
-    static void dfs(int V, LinkedList<Integer>[] adj){
-        List<Boolean> visited = new ArrayList<>(V);
-        //mark all the vertices as not visited
-        for(int i=0; i< V; i++)
-            visited.add(false);
+        Deque<Integer> stack = new ArrayDeque<>();
+        stack.push(v);
 
-        for(int i=0; i< V; i++)
-            if(!visited.get(i))
-                dfsHelper(i, visited, adj);
-    }
+        while (!stack.isEmpty()) {
+            v = stack.pop();
 
-    static void dfsHelper(int s, List<Boolean> visited, LinkedList<Integer>[] adj) {
-        //stack for DFS
-        Stack<Integer> stack = new Stack<>();
-        //push the current source node
-        stack.push(s);
-        while(!stack.empty()){
-            //pop the vertex from stack and print it
-            s = stack.peek();
-            stack.pop();
-            //stack may contain same vertex twice
-            //so print vertex only if not visited
-            if(!visited.get(s)) {
-                System.out.print(s + " ");
-                visited.set(s, true);
-            }
-            //get adjacent vertices for the popped vertext 's'
-            Iterator<Integer> itr = adj[s].iterator();
-            while(itr.hasNext()) {
-                int v = itr.next();
-                //if adjacent has not been visited, then push it to the stack
-                if(!visited.get(v)){
-                    stack.push(v);
+            if (!visited[v]) {
+                visited[v] = true;
+                System.out.printf("%d ", v);
+
+                for(Integer w : g.getAdj().get(v)) {
+                    stack.push(w);
                 }
             }
         }
     }
+
     public static void main(String[] args) {
-        Graph g = new Graph(5);
-
+        GraphUndirectedByAdjList g = new GraphUndirectedByAdjList(5);
+        g.addEdge(0, 2);
+        g.addEdge(1, 2);
         g.addEdge(1, 0);
-        g.addEdge(2, 1);
-        g.addEdge(3, 4);
-        g.addEdge(4, 0);
+        g.addEdge(1, 3);
+        g.addEdge(2, 4);
 
-        System.out.println("Following is Depth First Traversal");
-        dfs(g.V, g.adj);
+        dfsByIterative(g, 0);
     }
 }
