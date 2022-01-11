@@ -1,0 +1,27 @@
+connected component pseudo code
+//https://www.youtube.com/watch?v=9esCn0awd5k
+
+connected_components(G)
+    for each vertex v in N
+        flg[v]=-1
+    count=0
+
+    for (int v=0 , v< N , v++)
+        if(flg[v[== -1)
+            DFS(v, flag)
+            count++
+            print(v)
+        print(count)
+
+ DFS(int v, int flag)
+     flag[v] =1
+     print(v)
+     for each adjacent node u of v
+        if (flg[u] == -1)
+            DFS(u, flag)
+
+
+
+
+// G(E,V)
+//N=9

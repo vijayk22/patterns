@@ -8,7 +8,9 @@ public class GraphDFSRecur {
     static void traversal(GraphUndirectedByAdjList g) {
         boolean visited[] = new boolean[g.getV()];
 
+        //traverse row wise/vertices
         for (int i = 0; i < g.getV(); i++) {
+            //traverse column wise/edges
             if (!visited[i])
                 dfs(g, i, visited);
         }
